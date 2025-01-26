@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  clone-and-check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -43,7 +43,7 @@ jobs:
     - name: Run tests
       run: pytest tests/sample.py
 
-  build:
+  build-image:
     runs-on: ubuntu-latest
     needs: test
     steps:
