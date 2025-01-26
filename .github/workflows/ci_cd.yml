@@ -1,4 +1,4 @@
-name: CI/CD Actions Pipeline
+name: Actions Pipeline
 
 on:
   push:
