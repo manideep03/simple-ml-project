@@ -12,9 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Check all file
-      run: |
-      ls -ltr
-      echo "Build stage complete"
+      run: ls -ltr
+    - name: Done
+      run: echo "Build stage complete"
 
   lint-check:
     runs-on: ubuntu-latest
