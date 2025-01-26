@@ -59,7 +59,7 @@ jobs:
   
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-image
     steps:
     - uses: actions/checkout@v3
     - name: Deploy image
