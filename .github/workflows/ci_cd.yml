@@ -7,8 +7,18 @@ on:
     branches: [ "main" ]
 
 jobs:
-  lint:
+  clone-and-check:
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Check all file
+      run: ls -ltr
+    - name: Done
+      run: echo "Build stage complete"
+
+  lint-check:
+    runs-on: ubuntu-latest
+    needs: clone-and-check
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -22,7 +32,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs: lint
+    needs: lint-check
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -34,7 +44,7 @@ jobs:
     - name: Run tests
       run: pytest tests/sample.py
 
-  build:
+  build-image:
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -47,3 +57,14 @@ jobs:
       run: |
         docker build -t my-ml-model:latest .
         echo "Docker build completed"
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-image
+    steps:
+    - uses: actions/checkout@v3
+    - name: Deploy image
+      run: |
+        echo "Push to docker logic goes here"
+        echo "Docker Deploy completed"
+        echo "End of actions"
