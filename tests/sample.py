@@ -1,16 +1,13 @@
-import unittest
+# importing the module
+import pytest
 
 
-def add(x, y):
-    return x + y
+#defining a function with parameter x
+def func(x):
+    return x+5
 
 
-class MyTestCase(unittest.TestCase):
-    def test_add(self):
-        self.assertEqual(add(2, 3), 5)
-        self.assertEqual(add(-1, 1), 0)
-        self.assertEqual(add(0, 0), 0)
-
-
-if __name__ == '__main__':
-    unittest.main()
+#defining an another function  
+def test_method():
+#check whether 3+5 = 8 or not by passing 3 as an argument in function x
+    assert func(3) == 8
