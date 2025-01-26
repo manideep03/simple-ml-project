@@ -32,7 +32,7 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements-test.txt
     - name: Run tests
-      run: pytest tests\sample.py
+      run: pytest tests/sample.py
 
   build:
     runs-on: ubuntu-latest
