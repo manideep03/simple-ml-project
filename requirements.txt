@@ -5,3 +5,5 @@ scipy
 tensorflow
 Pillow
 h5py
+imageio
+opencv-python
