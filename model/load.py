@@ -1,6 +1,5 @@
 import numpy as np
 import keras.models
-from scipy.misc import imread, imresize,imshow
 import tensorflow as tf
 
 from keras.models import Sequential
@@ -8,6 +7,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 
+# tf.compat.v1.enable_eager_execution()
 def init():
     num_classes = 10
     img_rows, img_cols = 28, 28
@@ -23,7 +23,7 @@ def init():
     model.add(Dense(num_classes, activation='softmax'))
     
     #load woeights into new model
-    model.load_weights("weights.h5")
+    model.load_weights("trrain_model.weights.h5")
     print("Loaded Model from disk")
 
     #compile and evaluate loaded model
@@ -31,6 +31,6 @@ def init():
     #loss,accuracy = model.evaluate(X_test,y_test)
     #print('loss:', loss)
     #print('accuracy:', accuracy)
-    graph = tf.get_default_graph()
+    graph = tf.compat.v1.get_default_graph()
 
     return model, graph
