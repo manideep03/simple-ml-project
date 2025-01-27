@@ -14,6 +14,7 @@ model, graph = init()
     
 @app.route('/')
 def index():
+    print("Hello")
     return render_template("index.html")
 
 @app.route('/predict/', methods=['GET','POST'])
