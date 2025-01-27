@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from scipy.misc import imsave, imread, imresize
 import numpy as np
 import keras.models
 import re
@@ -23,9 +22,9 @@ def predict():
     parseImage(request.get_data())
 
     # read parsed image back in 8-bit, black and white mode (L)
-    x = imread('output.png', mode='L')
+    x = cv2.imread('output.png', cv2.IMREAD_GRAYSCALE)
     x = np.invert(x)
-    x = imresize(x,(28,28))
+    x = cv2.resize(x, (28, 28), interpolation=cv2.INTER_AREA)
 
     # reshape image data for use in neural network
     x = x.reshape(1,28,28,1)
